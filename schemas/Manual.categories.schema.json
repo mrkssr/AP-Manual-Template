@@ -30,6 +30,15 @@
                             "type": "boolean",
                             "default": false
                         },
+                        "description": {
+                            "description": "(Optional) Set a description for this option?",
+                            "type": "string"
+                        },
+                        "default": {
+                            "description": "(Optional) Is the deault value for this option true or false? (true if not set)",
+                            "type": "boolean",
+                            "default": true
+                        },
                         "_comment": {"$ref": "#/definitions/comment"}
                     }
                 }

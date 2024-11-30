@@ -31,8 +31,8 @@ for category in category_table:
         if option_name[0] == "!":
             option_name = option_name[1:]
         if option_name not in manual_options:
-            manual_options[option_name] = type(option_name, (DefaultOnToggle,), {"default": True})
-            manual_options[option_name].__doc__ = "Should items/locations linked to this option be enabled?"
+            manual_options[option_name] = type(option_name, (DefaultOnToggle,), {"default": category_table[category].get("default", True)})
+            manual_options[option_name].__doc__ = category_table[category].get("description", "Should items/locations linked to this option be enabled?")
 
 if starting_items:
     for starting_items in starting_items:
@@ -41,8 +41,8 @@ if starting_items:
                 if option_name[0] == "!":
                     option_name = option_name[1:]
                 if option_name not in manual_options:
-                    manual_options[option_name] = type(option_name, (DefaultOnToggle,), {"default": True})
-                    manual_options[option_name].__doc__ = "Should items/locations linked to this option be enabled?"
+                    manual_options[option_name] = type(option_name, (DefaultOnToggle,), {"default": category_table[category].get("default", True)})
+                    manual_options[option_name].__doc__ = category_table[category].get("description", "Should items/locations linked to this option be enabled?")
 
 manual_options = after_options_defined(manual_options)
 manual_options_data = make_dataclass('ManualOptionsClass', manual_options.items(), bases=(PerGameCommonOptions,))
